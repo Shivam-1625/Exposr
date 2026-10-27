@@ -46,6 +46,14 @@ def get_ip():
         "value": ip_address
     })
 
+@app.route("/api/debug-network")
+def debug_network():
+    return jsonify({
+        "remote_addr": request.remote_addr,
+        "x_forwarded_for": request.headers.get("X-Forwarded-For"),
+        "x_real_ip": request.headers.get("X-Real-IP")
+    })
+
 @app.route("/api/headers")
 def get_request_headers():
     header_names = [
