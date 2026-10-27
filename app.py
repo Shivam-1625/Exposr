@@ -1,7 +1,10 @@
 from flask import Flask, jsonify, render_template, request
+from werkzeug.middleware.proxy_fix import ProxyFix
 from exposr.explanations import load_explanations
 
 app = Flask(__name__)
+
+app.wsgi_app = ProxyFix(app.wsgi_app, x_for=3)
 
 @app.after_request
 def add_security_headers(response):
@@ -46,13 +49,6 @@ def get_ip():
         "value": ip_address
     })
 
-@app.route("/api/debug-network")
-def debug_network():
-    return jsonify({
-        "remote_addr": request.remote_addr,
-        "x_forwarded_for": request.headers.get("X-Forwarded-For"),
-        "x_real_ip": request.headers.get("X-Real-IP")
-    })
 
 @app.route("/api/headers")
 def get_request_headers():
