@@ -1,0 +1,73 @@
+{
+  "browser_language": {
+    "title": "Your browser's preferred language",
+    "short_description": "The language your browser prefers websites to use.",
+    "category": "Browser signal",
+    "description": "Websites can read your browser's preferred language to choose which language to display. This can help websites show content in a language you understand.",
+    "misuse": "Language preferences can contribute to a broader browser profile when combined with other signals. A website could also use them to personalize content.",
+    "limitations": "This setting does not establish your nationality, ethnicity, location, or identity. Many people share the same language preference.",
+    "protection": "Review your browser's language preferences if you want to change them. Changing this setting may affect website language selection, but it does not make you anonymous."
+  },
+  "browser_timezone": {
+    "title": "Your browser's time zone",
+    "short_description": "The time zone your browser reports, which websites can use to display local times.",
+    "category": "Browser signal",
+    "description": "Websites can ask your browser which time zone it uses. This helps applications display local times, schedule events, and show relevant dates.",
+    "misuse": "A time zone can contribute to a broader browser profile when combined with other signals. It may also help a website make assumptions about your region.",
+    "limitations": "A time zone does not establish your exact location. People can travel or configure their devices to use a different time zone.",
+    "protection": "Review your device's date and time settings if you want to change this value. Changing it may affect calendars and other applications, and does not make you anonymous."
+  },
+  "screen_dimensions": {
+    "title": "Your screen size",
+    "short_description": "The size of your display as reported by your browser. These measurements may differ from your screen's physical resolution.",
+    "category": "Device signal",
+    "description": "Your browser reports the screen's width and height in units called CSS pixels. These are used to arrange website content and may not match the physical pixels on your display.",
+    "misuse": "Screen dimensions can contribute to browser fingerprinting when combined with other characteristics. A combination of less common values may help distinguish one browser from others.",
+    "limitations": "These dimensions do not uniquely identify your device or prove who you are. Display scaling and other settings can affect the reported values.",
+    "protection": "You generally do not need to change your display settings for privacy. Changing screen dimensions alone is not a reliable way to prevent tracking."
+  },
+  "viewport_dimensions": {
+    "title": "Your webpage's visible area",
+    "short_description": "The width and height of the area where the webpage is visible inside your browser window.",
+    "category": "Browser signal",
+    "description": "The viewport is the space available for displaying the webpage itself. It is usually smaller than your full screen because browser tabs, the address bar, and other interface elements take up space.",
+    "misuse": "Viewport dimensions may contribute to a broader browser profile when combined with screen dimensions and other signals.",
+    "limitations": "The viewport is not the same as your physical screen size. It can change when you resize the browser window or change zoom settings.",
+    "protection": "No special action is normally needed. Resizing your browser changes this measurement, but does not by itself prevent tracking or make you anonymous."
+  },
+  "device_pixel_ratio": {
+    "title": "Your display scaling",
+    "short_description": "A value that helps explain how the pixels websites use relate to the physical pixels used to display content on your screen.",
+    "category": "Device signal",
+    "description": "The device pixel ratio helps websites display text and images at suitable sizes and sharpness. For example, a ratio of 2 means one CSS pixel corresponds to roughly two physical pixels in each dimension under that configuration.",
+    "misuse": "This value may contribute to browser fingerprinting when combined with screen dimensions and other browser characteristics.",
+    "limitations": "It does not identify a particular device. Display scaling, browser zoom, and configuration can affect the reported value.",
+    "protection": "Keep display settings that work for you. Changing scaling or zoom solely to alter this value is not a reliable privacy measure."
+  },
+  "browser_platform": {
+    "title": "Your browser's platform information",
+    "short_description": "A value your browser provides that may give websites a clue about the platform you're using.",
+    "category": "Browser signal",
+    "description": "Your browser can expose a platform-related value that gives websites a general clue about the environment in which it is running.",
+    "misuse": "Platform information may contribute to browser profiling when combined with other observations.",
+    "limitations": "This value is not definitive proof of your operating system or device. Browsers may return generic or legacy values. For example, Win32 does not necessarily mean Windows is running as a 32-bit operating system.",
+    "protection": "Keep your browser updated and review its privacy features. This value may not be configurable, and changing it is not necessary for most users."
+  },
+  "ip_address": {
+    "title": "IP Address",
+    "category": "Network Information",
+    "short_description": "The network address observed by the server when you connect.",
+    "description": "Every connection to a website arrives from an IP address visible to the server or the infrastructure handling the connection. This address can help identify the network or internet service provider used for the connection.",
+    "misuse": "An IP address may be used to estimate a broad geographic area, associate activity across services when combined with other data, or apply network-level restrictions. It does not automatically reveal your exact home address or prove your identity.",     "limitations": "The address may belong to a VPN, proxy, mobile carrier, university, company, or shared network rather than an individual device. In a deployment behind a reverse proxy, Exposr must be configured to identify the visitor's address safely. Local development may show a loopback address instead of your public IP.",
+    "protection": "Use a reputable VPN or privacy relay if you want to mask your network's public IP from the destination website. Remember that this does not hide all browser signals or make you anonymous. Review the privacy policy of the services you use."
+  },
+  "browser_identity": {
+    "title": "Your browser identity",
+    "short_description": "The browser family and version inferred from information your browser reports.",
+    "category": "Browser signal",
+    "description": "Websites can inspect the browser's User-Agent string to identify a likely browser family and reported version. Exposr checks this string against known browser patterns and, when available, checks Brave's browser-specific API to help distinguish Brave from other Chromium-based browsers. Websites commonly use browser information to select compatible features, troubleshoot problems, and understand the environment in which a page is running.",
+    "misuse": "Browser identity can contribute to browser fingerprinting when combined with other signals, such as your time zone, screen dimensions, language, and supported browser features. This combination may help a website recognise a returning browser configuration or contribute to tracking and profiling. Browser identity alone does not establish who you are or prove that tracking is taking place.",
+    "limitations": "This result is an estimate based on browser-reported information, not independent verification of the installed browser or its security state. User-Agent strings can be modified, reduced, or shared across different browsers. Some browsers deliberately limit identifying information, and Brave's browser-specific API may not be available. A reported version does not prove that your browser is fully updated or free from vulnerabilities.",
+    "protection": "Keep your browser updated through its official update mechanism. Review its tracking-protection and fingerprinting-protection settings if privacy is a concern. Avoid installing untrusted extensions. Hiding or changing your User-Agent alone does not prevent fingerprinting because websites may combine other browser signals."
+  }
+}

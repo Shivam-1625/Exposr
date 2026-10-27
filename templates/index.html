@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <meta
+        name="description"
+        content="Explore what your browser exposes to websites and understand the privacy implications."
+    >
+
+    <title>Exposr — Understand Your Digital Exposure</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+    <script
+        src="{{ url_for('static', filename='js/detectors.js') }}"
+        defer
+    ></script>
+    <script
+        src="{{ url_for('static', filename='js/app.js') }}"
+        defer
+    ></script>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="/" aria-label="Exposr home">
+                <span class="brand-mark" aria-hidden="true">E.</span>
+                <span>exposr</span>
+            </a>
+
+            <span class="header-label">Privacy Education</span>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero container">
+            <p class="eyebrow">YOUR BROWSER. YOUR EXPOSURE.</p>
+
+            <h1>
+                The web sees more than
+                <span>you might expect.</span>
+            </h1>
+
+            <p class="hero-description">
+                Discover what your browser reveals to a website,
+                why those signals matter, and what they do
+                — and do not — tell someone about you.
+            </p>
+
+            <div class="hero-actions">
+                <p class="privacy-note">
+                    No special permissions required for this scan.
+                </p>
+            </div>
+
+            <div class="hero-footnote">
+                <span class="status-dot" aria-hidden="true"></span>
+                Browser-side observations
+            </div>
+        </section>
+
+        <section
+            id="report"
+            class="report-section"
+            aria-labelledby="report-heading"
+        >
+            <div class="container">
+                
+                <div class="section-heading report-heading">
+                    <div class="report-heading-content">
+                        <p class="eyebrow">EXPOSURE REPORT</p>
+
+                        <h2 id="report-heading">
+                            What your browser reveals
+                        </h2>
+
+                        <p class="section-description">
+                            Select a finding to explore its meaning,
+                            limitations, and practical protections.
+                        </p>
+                    </div>
+
+                    <div class="report-heading-actions">
+                        <button
+                            id="start-scan"
+                            class="rescan-button"
+                            type="button"
+                        >
+                            <span class="rescan-icon" aria-hidden="true">↻</span>
+                            Rescan
+                        </button>
+
+                        <p
+                            id="report-status"
+                            class="report-status"
+                            aria-live="polite"
+                        >
+                            Scan not started
+                        </p>
+                    </div>
+                </div>
+
+                <div
+                    id="report-empty"
+                    class="report-empty"
+                    aria-live="polite"
+                >
+                    Run the inspection to see your browser findings.
+                </div>
+
+                <div
+                    id="report-layout"
+                    class="report-layout"
+                    hidden
+                >
+                    <section
+                        class="findings-panel"
+                        aria-label="Browser findings"
+                    >
+                        <div class="findings-panel-heading">
+                            <h3>Observed signals</h3>
+
+                            <span
+                                id="findings-count"
+                                class="findings-count"
+                            >
+                                0 findings
+                            </span>
+                        </div>
+
+                        <div
+                            id="findings-grid"
+                            class="findings-grid"
+                        ></div>
+                    </section>
+
+                    <div
+                        id="detail-backdrop"
+                        class="detail-backdrop"
+                        hidden
+                        aria-hidden="true"
+                    ></div>
+
+                    <aside
+                        id="detail-sidebar"
+                        class="detail-sidebar"
+                        aria-label="Finding details"
+                        aria-hidden="true"
+                        inert
+                    >
+                        <div class="detail-sidebar-header">
+                            <span class="eyebrow">
+                                FINDING DETAILS
+                            </span>
+
+                            <button
+                                id="close-sidebar"
+                                class="close-sidebar"
+                                type="button"
+                                aria-label="Close finding details"
+                            >
+                                ×
+                            </button>
+                        </div>
+
+                        <p
+                            id="detail-category"
+                            class="detail-category"
+                        ></p>
+
+                        <h3
+                            id="detail-title"
+                            class="detail-title"
+                        ></h3>
+
+                        <p
+                            id="detail-short-description"
+                            class="detail-short-description"
+                        ></p>
+
+                        <div class="detail-value-box">
+                            <span class="detail-label">
+                                OBSERVED VALUE
+                            </span>
+
+                            <p
+                                id="detail-value"
+                                class="detail-value"
+                            ></p>
+
+                            <p
+                                id="detail-source"
+                                class="detail-source"
+                            ></p>
+                        </div>
+
+                        <section class="detail-section">
+                            <h4>What does it mean?</h4>
+                            <p id="detail-description"></p>
+                        </section>
+
+                        <section class="detail-section">
+                            <h4>How could it be misused?</h4>
+                            <p id="detail-misuse"></p>
+                        </section>
+
+                        <section class="detail-section">
+                            <h4>Limitations and context</h4>
+                            <p id="detail-limitations"></p>
+                        </section>
+
+                        <section
+                            class="detail-section protection-section"
+                        >
+                            <h4>How can you protect yourself?</h4>
+                            <p id="detail-protection"></p>
+                        </section>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <section class="how-section container">
+            <div class="section-heading">
+                <p class="eyebrow">HOW EXPOSR WORKS</p>
+                <h2>Evidence first. Context always.</h2>
+            </div>
+
+            <div class="principles-grid">
+                <article class="principle">
+                    <span class="principle-number">01</span>
+                    <h3>Detect</h3>
+                    <p>
+                        Inspect browser-reported signals and
+                        distinguish observed values from assumptions.
+                    </p>
+                </article>
+
+                <article class="principle">
+                    <span class="principle-number">02</span>
+                    <h3>Explain</h3>
+                    <p>
+                        Understand what each signal means, how it
+                        might be used, and what it cannot prove.
+                    </p>
+                </article>
+
+                <article class="principle">
+                    <span class="principle-number">03</span>
+                    <h3>Protect</h3>
+                    <p>
+                        Learn practical privacy measures without
+                        exaggerating the risks or promising anonymity.
+                    </p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <a class="brand footer-brand" href="/">
+                <span class="brand-mark" aria-hidden="true">E.</span>
+                <span>exposr</span>
+            </a>
+
+            <p>
+                One Step Towards a more Secure Future.
+            </p>
+
+            <p class="footer-disclaimer">
+                An educational tool, not a guarantee of anonymity
+                or a complete security audit.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
